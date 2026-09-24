@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SparkleWash Laundry</title>
+<style>
+:root{
+  --bg:#f4faf9; --card:#ffffff; --ink:#132524; --sub:#5c716f;
+  --brand:#0d9488; --brand-dark:#0b7a70; --accent:#fb7185; --accent2:#facc15; --line:#dcebe8;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1716; --card:#122321; --ink:#e7f3f1; --sub:#93aeab;
+    --brand:#2dd4bf; --brand-dark:#14b8a6; --accent:#fb7185; --accent2:#fbbf24; --line:#1c3532;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1716; --card:#122321; --ink:#e7f3f1; --sub:#93aeab;
+  --brand:#2dd4bf; --brand-dark:#14b8a6; --accent:#fb7185; --accent2:#fbbf24; --line:#1c3532;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(650px 400px at 85% -5%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%),
+    radial-gradient(600px 380px at -5% 20%, color-mix(in srgb, var(--brand) 20%, transparent), transparent 70%),
+    var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  line-height:1.5;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+header{
+  position:sticky; top:0; top:env(safe-area-inset-top,0px);
+  background:var(--card); border-bottom:1px solid var(--line); z-index:10;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1080px;margin:0 auto;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem;}
+.logo{width:34px;height:34px;flex:none;}
+.nav a{color:var(--sub);text-decoration:none;font-size:.9rem;margin-left:18px;}
+.nav a:hover{color:var(--brand);}
+
+.hero{padding:56px 20px 40px;overflow-x:clip;position:relative;}
+.hero::before{
+  content:"";position:absolute;inset:-40px 0 auto auto;width:420px;height:420px;
+  background:radial-gradient(circle,color-mix(in srgb, var(--accent) 35%, transparent),transparent 70%);
+  border-radius:50%;z-index:0;pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;
+  background:radial-gradient(circle,color-mix(in srgb, var(--brand) 30%, transparent),transparent 70%);
+  border-radius:50%;z-index:0;pointer-events:none;
+}
+.hero-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:36px;flex-wrap:wrap;position:relative;z-index:1;}
+.hero-text{flex:1 1 320px;min-width:0;}
+.hero-text h1{font-size:2.1rem;line-height:1.2;margin-bottom:14px;}
+.hero-text p{color:var(--sub);margin-bottom:22px;max-width:480px;}
+.btn{
+  display:inline-block;background:var(--brand);color:#fff;padding:12px 22px;
+  border-radius:10px;font-weight:600;text-decoration:none;border:none;cursor:pointer;font-size:.95rem;
+}
+.btn:hover{background:var(--brand-dark);}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);margin-left:10px;}
+.hero-art{flex:1 1 260px;min-width:220px;max-width:380px;}
+.hero-art svg{width:100%;height:auto;max-width:100%;}
+
+section{padding:44px 0;}
+.section-head{margin-bottom:26px;}
+.section-head h2{font-size:1.5rem;}
+.section-head p{color:var(--sub);margin-top:6px;}
+
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;}
+.card .icon{width:40px;height:40px;margin-bottom:12px;color:var(--brand);}
+.card h3{font-size:1.05rem;margin-bottom:6px;}
+.card p{color:var(--sub);font-size:.9rem;}
+
+.gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}
+.gtile{
+  aspect-ratio:1/1;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  color:#fff;position:relative;overflow:hidden;
+}
+.gtile svg{width:52%;height:52%;opacity:.95;}
+.gtile span{position:absolute;bottom:10px;left:12px;font-size:.8rem;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.4);}
+.g1{background:linear-gradient(135deg,#0d9488,#2dd4bf);}
+.g2{background:linear-gradient(135deg,#14b8a6,#facc15);}
+.g3{background:linear-gradient(135deg,#fb7185,#f97316);}
+.g4{background:linear-gradient(135deg,#0f766e,#fb7185);}
+
+.pay{display:flex;flex-wrap:wrap;gap:12px;}
+.pchip{
+  display:flex;align-items:center;gap:10px;background:var(--card);border:2px solid var(--line);
+  border-radius:12px;padding:12px 16px;font-weight:600;font-size:.9rem;
+  cursor:pointer;transition:border-color .15s,transform .1s;color:var(--ink);font-family:inherit;
+}
+.pchip:hover{border-color:var(--brand);}
+.pchip:active{transform:scale(.97);}
+.pchip.selected{border-color:var(--brand);background:color-mix(in srgb, var(--brand) 10%, var(--card));}
+.pchip .dot{width:10px;height:10px;border-radius:50%;flex:none;}
+.pchip .check{margin-left:4px;opacity:0;color:var(--brand);font-weight:800;}
+.pchip.selected .check{opacity:1;}
+.pay-status{margin-top:16px;color:var(--sub);font-size:.9rem;}
+.pay-status strong{color:var(--ink);}
+.pay-actions{margin-top:14px;}
+.pay-actions .btn[disabled]{opacity:.5;cursor:not-allowed;}
+.pay-details{
+  margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;display:none;
+}
+.pay-details.show{display:block;}
+.pay-details h4{font-size:1rem;margin-bottom:8px;}
+.pay-details dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.9rem;}
+.pay-details dt{color:var(--sub);}
+.pay-details dd{font-weight:600;}
+.pay-details .hint{margin-top:10px;color:var(--sub);font-size:.82rem;}
+
+.locations{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.loc h3{margin-bottom:6px;}
+.loc p{color:var(--sub);font-size:.92rem;margin-bottom:4px;}
+.loc a{color:var(--brand);text-decoration:none;font-weight:600;}
+
+footer{border-top:1px solid var(--line);padding:26px 0;margin-top:20px;}
+footer p{color:var(--sub);font-size:.85rem;text-align:center;}
+.note{color:var(--sub);font-size:.82rem;margin-top:8px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="var(--brand)"/><path d="M14 20a10 10 0 0 1 20 0v10a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V20z" fill="#fff"/><circle cx="24" cy="24" r="5" fill="var(--brand)"/></svg>
+      SparkleWash Laundry
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#payment">Payment</a>
+      <a href="#locations">Locations</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Fresh, folded, and delivered — laundry made effortless</h1>
+      <p>Wash & fold, dry cleaning, ironing, and pickup/delivery. Pay your way, drop off nearby, or have it collected at your door.</p>
+      <a href="#locations" class="btn">Find a location</a>
+      <a href="#payment" class="btn ghost">Payment options</a>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="30" width="180" height="200" rx="18" fill="var(--card)" stroke="var(--line)" stroke-width="2"/>
+        <circle cx="120" cy="120" r="60" fill="none" stroke="var(--brand)" stroke-width="10"/>
+        <circle cx="120" cy="120" r="60" fill="none" stroke="var(--accent)" stroke-width="10" stroke-dasharray="90 300"/>
+        <circle cx="120" cy="120" r="36" fill="var(--bg)"/>
+        <circle cx="60" cy="55" r="6" fill="var(--brand)"/>
+        <circle cx="80" cy="55" r="6" fill="var(--accent)"/>
+        <path d="M210 200 l40 -20 v40 z" fill="var(--brand)" opacity=".25"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<section id="services">
+  <div class="section-head"><h2>Our services</h2><p>Everything your laundry needs, in one place.</p></div>
+  <div class="grid">
+    <div class="card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="7"/><circle cx="12" cy="13" r="3"/><path d="M9 4h6l1 3H8z"/></svg>
+      <h3>Wash & Fold</h3>
+      <p>Everyday laundry washed, dried, and neatly folded.</p>
+    </div>
+    <div class="card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v10H4z"/><path d="M4 14l4 6h8l4-6"/></svg>
+      <h3>Dry Cleaning</h3>
+      <p>Gentle care for suits, dresses, and delicate fabrics.</p>
+    </div>
+    <div class="card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20l10-16 6 6-16 10z"/></svg>
+      <h3>Ironing & Pressing</h3>
+      <p>Crisp, wrinkle-free finishing on every item.</p>
+    </div>
+    <div class="card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h13l4-5v10l-4-5"/><circle cx="7" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></svg>
+      <h3>Pickup & Delivery</h3>
+      <p>We collect and drop off — no trip required.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-head"><h2>A peek inside</h2><p>Illustrative previews of the SparkleWash experience.</p></div>
+  <div class="gallery">
+    <div class="gtile g1"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="13" r="7"/><circle cx="12" cy="13" r="3"/></svg><span>Wash bay</span></div>
+    <div class="gtile g2"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Fold & pack</span></div>
+    <div class="gtile g3"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 20l10-16 6 6-16 10z"/></svg><span>Pressing</span></div>
+    <div class="gtile g4"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M3 12h13l4-5v10l-4-5"/></svg><span>On the way</span></div>
+  </div>
+  <p class="note">Sample graphics shown — swap in your own shop photos when you're ready.</p>
+</section>
+
+<section id="payment">
+  <div class="section-head"><h2>Payment methods</h2><p>Pay however suits you.</p></div>
+  <div class="pay" id="payGroup">
+    <button type="button" class="pchip" data-method="Cash on Pickup/Delivery"><span class="dot" style="background:#facc15"></span>Cash on Pickup/Delivery<span class="check">✓</span></button>
+    <button type="button" class="pchip" data-method="Debit/Credit Card"><span class="dot" style="background:#0d9488"></span>Debit/Credit Card<span class="check">✓</span></button>
+    <button type="button" class="pchip" data-method="MTN Mobile Money"><span class="dot" style="background:#22c55e"></span>MTN Mobile Money<span class="check">✓</span></button>
+    <button type="button" class="pchip" data-method="Vodafone Cash"><span class="dot" style="background:#fb7185"></span>Vodafone Cash<span class="check">✓</span></button>
+    <button type="button" class="pchip" data-method="AirtelTigo Money"><span class="dot" style="background:#f97316"></span>AirtelTigo Money<span class="check">✓</span></button>
+    <button type="button" class="pchip" data-method="Bank Transfer"><span class="dot" style="background:#6366f1"></span>Bank Transfer<span class="check">✓</span></button>
+  </div>
+  <p class="pay-status" id="payStatus">No payment method selected yet.</p>
+  <div class="pay-details" id="payDetails">
+    <h4 id="pdTitle"></h4>
+    <dl id="pdBody"></dl>
+    <p class="hint" id="pdHint"></p>
+  </div>
+  <script>
+    (function(){
+      var group = document.getElementById('payGroup');
+      var status = document.getElementById('payStatus');
+      var details = document.getElementById('payDetails');
+      var pdTitle = document.getElementById('pdTitle');
+      var pdBody = document.getElementById('pdBody');
+      var pdHint = document.getElementById('pdHint');
+
+      var info = {
+        'Cash on Pickup/Delivery': {
+          title: 'Pay with cash',
+          rows: [['When','At pickup or on delivery'],['Accepted by','Driver or front-desk staff']],
+          hint: 'Please have the exact amount ready where possible.'
+        },
+        'Debit/Credit Card': {
+          title: 'Pay by card',
+          rows: [['Where','Card reader at any branch counter'],['Cards accepted','Visa, Mastercard']],
+          hint: 'Card payments are taken in person — this page does not collect card numbers.'
+        },
+        'MTN Mobile Money': {
+          title: 'Pay via MTN Mobile Money',
+          rows: [['MoMo number','024 123 4567'],['Account name','SparkleWash Laundry']],
+          hint: 'Please use your order number as the payment reference.'
+        },
+        'Vodafone Cash': {
+          title: 'Pay via Vodafone Cash',
+          rows: [['Vodafone Cash number','050 123 4567'],['Account name','SparkleWash Laundry']],
+          hint: 'Please use your order number as the payment reference.'
+        },
+        'AirtelTigo Money': {
+          title: 'Pay via AirtelTigo Money',
+          rows: [['AirtelTigo number','027 123 4567'],['Account name','SparkleWash Laundry']],
+          hint: 'Please use your order number as the payment reference.'
+        },
+        'Bank Transfer': {
+          title: 'Pay by bank transfer',
+          rows: [['Bank','GCB Bank'],['Account name','SparkleWash Laundry Ltd'],['Account number','1234567890']],
+          hint: 'Please email your transfer receipt to hello@sparklewash.example.'
+        }
+      };
+
+      group.addEventListener('click', function(e){
+        var chip = e.target.closest('.pchip');
+        if(!chip) return;
+        group.querySelectorAll('.pchip').forEach(function(c){ c.classList.remove('selected'); });
+        chip.classList.add('selected');
+        var method = chip.getAttribute('data-method');
+        status.innerHTML = 'Selected: <strong>' + method + '</strong>';
+
+        var data = info[method];
+        pdTitle.textContent = data.title;
+        pdBody.innerHTML = data.rows.map(function(r){
+          return '<dt>' + r[0] + '</dt><dd>' + r[1] + '</dd>';
+        }).join('');
+        pdHint.textContent = data.hint;
+        details.classList.add('show');
+      });
+    })();
+  </script>
+</section>
+
+<section id="locations">
+  <div class="section-head"><h2>Locations</h2><p>Drop off at the branch nearest you.</p></div>
+  <div class="locations">
+    <div class="card loc">
+      <h3>SparkleWash — Osu</h3>
+      <p>Oxford Street, Osu, Accra</p>
+      <p>Mon–Sat, 7:00 AM – 8:00 PM</p>
+      <a href="tel:+233201234567">+233 20 123 4567</a>
+    </div>
+    <div class="card loc">
+      <h3>SparkleWash — East Legon</h3>
+      <p>Lagos Avenue, East Legon, Accra</p>
+      <p>Mon–Sun, 8:00 AM – 9:00 PM</p>
+      <a href="tel:+233241234568">+233 24 123 4568</a>
+    </div>
+    <div class="card loc">
+      <h3>SparkleWash — Tema</h3>
+      <p>Community 4, Tema</p>
+      <p>Mon–Sat, 7:30 AM – 7:30 PM</p>
+      <a href="tel:+233551234569">+233 55 123 4569</a>
+    </div>
+  </div>
+  <p class="note">Placeholder addresses and numbers — replace with your real branches.</p>
+</section>
+
+</div>
+
+<footer>
+  <p>© 2026 SparkleWash Laundry · hello@sparklewash.example</p>
+</footer>
+
+</body>
+</html>
