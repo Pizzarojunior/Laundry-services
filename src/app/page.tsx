@@ -14,7 +14,7 @@ export default function Home() {
           </div>
           <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-white/20">
             <img
-              src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=1200&q=85"
+              src="/images/laundry-folded.jpg"
               alt="Freshly folded white laundry in a basket"
               className="h-72 md:h-96 w-full object-cover"
             />
@@ -36,7 +36,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-8 text-center">Services & Pricing</h2>
         <div className="mb-8 overflow-hidden rounded-3xl">
           <img
-            src="https://images.unsplash.com/photo-1545173168-9f1947e771?auto=format&fit=crop&w=1600&q=85"
+            src="/images/laundry-room.jpg"
             alt="Clean laundry room with washing machines"
             className="h-48 md:h-64 w-full object-cover"
           />
