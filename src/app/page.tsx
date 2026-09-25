@@ -5,10 +5,24 @@ export default function Home() {
   return (
     <main>
       <section className="bg-gradient-to-br from-sky-500 to-indigo-600 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-24 text-center">
-          <h1 className="text-5xl font-extrabold mb-4">Laundry day, done for you.</h1>
-          <p className="text-lg opacity-90 mb-8">Free pickup & delivery. Schedule once or set a recurring plan and save up to 15%.</p>
-          <Link href="/book" className="bg-white text-sky-700 font-semibold px-8 py-3 rounded-full shadow hover:bg-sky-50">Book a pickup</Link>
+        <div className="max-w-6xl mx-auto px-4 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-sky-100 mb-4">Fresh clothes, less effort</p>
+            <h1 className="text-5xl font-extrabold mb-4">Laundry day, done for you.</h1>
+            <p className="text-lg opacity-90 mb-8">Free pickup & delivery. Schedule once or set a recurring plan and save up to 15%.</p>
+            <Link href="/book" className="inline-block bg-white text-sky-700 font-semibold px-8 py-3 rounded-full shadow hover:bg-sky-50">Book a pickup</Link>
+          </div>
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-white/20">
+            <img
+              src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=1200&q=85"
+              alt="Freshly folded white laundry in a basket"
+              className="h-72 md:h-96 w-full object-cover"
+            />
+            <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-slate-950/70 px-4 py-3 backdrop-blur-sm">
+              <p className="font-semibold">Picked up, cleaned, folded.</p>
+              <p className="text-sm text-slate-200">Back at your door on your schedule.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -20,6 +34,13 @@ export default function Home() {
 
       <section id="services" className="max-w-6xl mx-auto px-4 py-10">
         <h2 className="text-3xl font-bold mb-8 text-center">Services & Pricing</h2>
+        <div className="mb-8 overflow-hidden rounded-3xl">
+          <img
+            src="https://images.unsplash.com/photo-1545173168-9f1947e771?auto=format&fit=crop&w=1600&q=85"
+            alt="Clean laundry room with washing machines"
+            className="h-48 md:h-64 w-full object-cover"
+          />
+        </div>
         <div className="grid md:grid-cols-4 gap-6">
           {SERVICES.map((s) => (
             <div key={s.id} className="bg-white rounded-2xl p-6 shadow-sm border">
